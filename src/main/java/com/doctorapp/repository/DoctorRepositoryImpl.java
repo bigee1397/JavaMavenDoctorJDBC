@@ -14,7 +14,7 @@ import com.doctorapp.util.Queries;
 
 public class DoctorRepositoryImpl implements IDoctorRepository{
 
-    @Override
+    
     public void addDoctor(Doctor doctor) {
         try (
             Scanner sc =  new Scanner(System.in);
@@ -33,7 +33,7 @@ public class DoctorRepositoryImpl implements IDoctorRepository{
         }
     }
 
-    @Override
+    
     public void updateDoctor(double consultationFees, int doctorId) {
         try (
             Connection connection = DoctorDB.openConnetion();
@@ -49,7 +49,7 @@ public class DoctorRepositoryImpl implements IDoctorRepository{
         }
     }
 
-    @Override
+    
     public void daleteDoctor(int doctorId) {
         try (
             Connection connection = DoctorDB.openConnetion();
@@ -64,7 +64,7 @@ public class DoctorRepositoryImpl implements IDoctorRepository{
         }
     }
 
-    @Override
+    
     public Doctor findDoctorById(int doctorId) {
         Doctor doctor = new Doctor();
         try (
@@ -91,7 +91,7 @@ public class DoctorRepositoryImpl implements IDoctorRepository{
         return doctor;
     }
 
-    @Override
+    
     public List<Doctor> findAll() {
         List<Doctor> doctors = new ArrayList<>();
         try (
@@ -115,23 +115,23 @@ public class DoctorRepositoryImpl implements IDoctorRepository{
         return doctors;
     }
 
-    @Override
+    
     public List<Doctor> findBySpeciality(String speciality) {
         List<Doctor> doctorsBySpeciality = new ArrayList<>();
         try (
             Connection connection = DoctorDB.openConnetion();
             PreparedStatement preparedStatement = connection.prepareStatement(Queries.FINDBYSPECIALITY);
             ) {
-                preparedStatement.setString(1, speciality);
+                preparedStatement.setString(1, "%" + speciality + "%");
                 try (ResultSet resultSet = preparedStatement.executeQuery();) {
                     while (resultSet.next()) {
                         Doctor doctor = new Doctor();
                         doctor.setDoctorId(resultSet.getInt("doctor_id"));
                         doctor.setDoctorName(resultSet.getString("doctor_name"));
-                        doctor.setSpeciality(speciality);
+                        doctor.setSpeciality(resultSet.getString("speciality"));
                         doctor.setExperience(resultSet.getInt("experience"));
                         doctor.setRatings(resultSet.getInt("ratings"));
-                        doctor.setConsultationFees(resultSet.getDouble("consultation_fees"));
+                        doctor.setConsultationFees(resultSet.getDouble("consultation_fee"));
                         doctorsBySpeciality.add(doctor);
                 }
             }
@@ -141,7 +141,7 @@ public class DoctorRepositoryImpl implements IDoctorRepository{
         return doctorsBySpeciality;
     }
 
-    @Override
+    
     public List<Doctor> findBySpecialityAndExp(String speciality, int experience) {
        List<Doctor> doctorsBySpecAndExp = new ArrayList<>();
        try (
@@ -168,7 +168,7 @@ public class DoctorRepositoryImpl implements IDoctorRepository{
        return doctorsBySpecAndExp;
     }
 
-    @Override
+    
     public List<Doctor> findBySpecialityAndLessFees(String speciality, double fees) {
         List<Doctor> doctorsBySpecAndFeesLessThan = new ArrayList<>();
        try (
@@ -195,7 +195,7 @@ public class DoctorRepositoryImpl implements IDoctorRepository{
        return doctorsBySpecAndFeesLessThan;
     }
 
-    @Override
+    
     public List<Doctor> findBySpecialityAndRatings(String speciality, int ratings) {
         List<Doctor> doctorsBySpecAndRatings = new ArrayList<>();
        try (
@@ -222,7 +222,7 @@ public class DoctorRepositoryImpl implements IDoctorRepository{
        return doctorsBySpecAndRatings;
     }
 
-    @Override
+    
     public List<Doctor> findBySpecialityAndNameContains(String speciality, String doctorName) {
         List<Doctor> doctorsBySpecAndNameContains = new ArrayList<>();
        try (

@@ -1,6 +1,9 @@
 package com.doctorapp.controller;
 
 import java.io.IOException;
+import java.io.PrintWriter;
+
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -31,7 +34,8 @@ public class AddDoctor extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
+		response.setContentType("text/html");
+		PrintWriter writer = response.getWriter();
 		String doctorName = request.getParameter("docName");
 		String spec = request.getParameter("speciality");
 		String speciality = Specialization.valueOf(spec).getSpeciality();
@@ -47,6 +51,10 @@ public class AddDoctor extends HttpServlet {
 		doctor.setExperience(experience);
 		
 		doctorService.addDoctor(doctor);
+		
+		RequestDispatcher dispatcher = request.getRequestDispatcher("admindashboard.jsp"); 
+		dispatcher.include(request, response);
+		writer.print("<center><p style=\"color:green;\">Doctor Deleted Successfully</p></center>");
 		
 	}
 

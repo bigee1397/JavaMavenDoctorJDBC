@@ -8,13 +8,13 @@
 <link rel="stylesheet" href="./css/styles.css">
 </head>
 <body>
-	<div>
+	<div class="indexHeader">
 		<a href="adminlogin.jsp"><button>Admin Login</button></a>
 	</div>
 	
 	<fieldset>
 		<legend align="center">Options</legend>
-		<form action="loginServlet" method="post">
+		<form action="searchDoctorSpeciality" method="post">
 				<table align="left" border="1">
 					<tr>
 						<td><input type="text" name="speciality" placeholder="Enter speciality you want to search...." width="200px" /></td>

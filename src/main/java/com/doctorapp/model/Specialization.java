@@ -6,7 +6,10 @@ public enum Specialization {
     PHYSICIAN("GENERAL PHYSICIAN"),
     GYNAEC("GYNAECOLOGIST"),
     NEURO("NEUROLOGIST"),
-    DERMA("DERMATOLOGIST");
+    DERMA("DERMATOLOGIST"),
+    ENDO("ENDOCRINOLOGIST"),
+    CARDIO("CARDIOLOGIST"),
+    OPHTHA("OPHTHALMOLOGIST");
   
     private String speciality;
     Specialization(String speciality) {

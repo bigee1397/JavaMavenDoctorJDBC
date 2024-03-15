@@ -8,7 +8,10 @@
 <link rel="stylesheet" href="./css/styles.css">
 </head>
 <body>	
-	<h1>Admin Dashboard</h1>
+	<div>	
+		<h1 style="">Admin Dashboard</h1>
+		<a href="index.jsp" style="padding-right: 20px;"><button>Go back to Home Page</button></a>
+	</div>
 	<hr>
 	<fieldset>
 		<legend align="center">Options</legend>

@@ -34,14 +34,15 @@ public class EditServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		int docId = Integer.parseInt(request.getParameter("docId"));
 		Doctor doctor = null;
+		String docId = request.getParameter("docId");
+		Integer doctorId = Integer.parseInt(docId);
 		try {
-			doctor = doctorService.getDoctorById(docId);
+			doctor = doctorService.getDoctorById(doctorId);
 			request.setAttribute("doctorObj", doctor);
 			RequestDispatcher dispatcher = request.getRequestDispatcher("updateDoctor.jsp");
 			dispatcher.forward(request, response);
-//			System.out.println(doctorService.getDoctorById(docId));
+			System.out.println(doctorService.getDoctorById(doctorId));
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

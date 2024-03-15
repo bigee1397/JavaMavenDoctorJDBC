@@ -8,7 +8,10 @@
  <link rel="stylesheet" href="./css/styles.css">
 </head>
 <body>
-	<h1>Adding a Doctor Record</h1>
+	<div>
+		<h1>Adding a Doctor Record</h1>
+		<a href="index.jsp"><button>Go back to Home Page</button></a>
+	</div>
 	<hr>
 	<fieldset>
 		<legend align="center">Adding a Doctor</legend>
@@ -32,6 +35,9 @@
 				            <option value="PHYSICIAN">General Physician</option>
 				            <option value="GYNAEC">Gynaecologist</option>
 				            <option value="NEURO">Neurologist</option>
+				            <option value="ENDO">Endocrinologist</option>
+				            <option value="CARDIO">Cardiologist</option>
+				            <option value="OPHTA">Ophthalmologist</option>
 			        	</select>
 			        </td>
 				</tr>

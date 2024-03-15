@@ -14,16 +14,17 @@ import com.doctorapp.service.DoctorServiceImpl;
 import com.doctorapp.service.IDoctorService;
 
 /**
- * Servlet implementation class UpdateServlet
+ * Servlet implementation class DeleteServlet
  */
-@WebServlet("/updateDoctor")
-public class UpdateServlet extends HttpServlet {
+@WebServlet("/deleteDoctor")
+public class DeleteServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private IDoctorService doctorService = new DoctorServiceImpl();
+       
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public UpdateServlet() {
+    public DeleteServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -32,18 +33,16 @@ public class UpdateServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
 		response.setContentType("text/html");
 		PrintWriter writer = response.getWriter();
-		double fees = Double.parseDouble(request.getParameter("fees"));
 		String docId = request.getParameter("docId");
 		Integer doctorId = Integer.parseInt(docId);
 		
 		try {
-			doctorService.updateDoctor(fees, doctorId);
+			doctorService.deleteDoctor(doctorId);
 			RequestDispatcher dispatcher = request.getRequestDispatcher("admindashboard.jsp"); 
 			dispatcher.include(request, response);
-			writer.print("<h1>Doctor Details Updated</h1>");
+			writer.print("<center><p style=\"color:red;\">Doctor Deleted Successfully</p></center>");
 		} catch(Exception e) {
 			e.printStackTrace();
 		}

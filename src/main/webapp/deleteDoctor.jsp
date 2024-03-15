@@ -8,15 +8,18 @@
 <link rel="stylesheet" href="./css/styles.css">
 </head>
 <body>
-	<h1>Deleting a Doctor Record</h1>
+	<div>
+		<h1>Deleting a Doctor Record</h1>
+		<a href="index.jsp"><button>Go back to Home Page</button></a>
+	</div>
 	<hr>
 	<fieldset>
 		<legend align="center">Options</legend>
-		<form action="deleteServlet" method="post">
+		<form action="deleteDoctor" method="post">
 				<table align="left" border="1">
 					<tr>
 						<td><input type="number" name="docId" placeholder="Enter Doctor ID...." /></td>
-						<td><input type="submit" value="Search" /> </td>
+						<td><input type="submit" value="Delete" /> </td>
 				</table>
 			</form> 	
 	</fieldset>

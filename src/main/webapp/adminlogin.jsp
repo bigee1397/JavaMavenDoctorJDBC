@@ -8,7 +8,10 @@
 <link rel="stylesheet" href="./css/styles.css">
 </head>
 <body>
-	<h1>Admin Login</h1>
+	<div>
+		<h1>Admin Login</h1>
+		<a href="index.jsp"><button>Go back to Home Page</button></a>
+	</div>
 	<hr>
 	<fieldset>
 		<legend align="center">Options</legend>
