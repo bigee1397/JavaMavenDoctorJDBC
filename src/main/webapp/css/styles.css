@@ -1,0 +1,9 @@
+@charset "ISO-8859-1";
+td {
+	padding:15px;
+}
+
+div {
+	display: flex;
+	text-align: right;
+}
